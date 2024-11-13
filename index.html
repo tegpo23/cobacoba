@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Guru dan Siswa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Data Guru dan Siswa</h1>
+</header>
+
+<div class="container">
+    <h2>Data Guru</h2>
+    <table id="guru-table">
+        <tr>
+            <th>Nama Guru</th>
+            <th>NPWP</th>
+        </tr>
+        <!-- Data Guru akan dimasukkan di sini -->
+    </table>
+    
+    <h2>Data Siswa</h2>
+    <table id="siswa-table">
+        <tr>
+            <th>Nama Siswa</th>
+            <th>NISN</th>
+        </tr>
+        <!-- Data Siswa akan dimasukkan di sini -->
+    </table>
+
+    <button onclick="updateData()">Perbarui Data</button>
+</div>
+
+<script>
+    // Data Awal Guru dan Siswa
+    const dataGuru = [
+        { nama: 'Budi Santoso', npwp: '12.345.678.9-123.000' },
+        { nama: 'Siti Aisyah', npwp: '98.765.432.1-098.000' }
+    ];
+
+    const dataSiswa = [
+        { nama: 'Rina Putri', nisn: '1234567890' },
+        { nama: 'Andi Saputra', nisn: '0987654321' }
+    ];
+
+    // Fungsi untuk menampilkan data di tabel
+    function displayData() {
+        const guruTable = document.getElementById('guru-table');
+        const siswaTable = document.getElementById('siswa-table');
+
+        // Bersihkan tabel sebelum menambah data
+        guruTable.innerHTML = `<tr><th>Nama Guru</th><th>NPWP</th></tr>`;
+        siswaTable.innerHTML = `<tr><th>Nama Siswa</th><th>NISN</th></tr>`;
+
+        // Masukkan data guru ke dalam tabel
+        dataGuru.forEach(guru => {
+            const row = guruTable.insertRow();
+            row.insertCell(0).textContent = guru.nama;
+            row.insertCell(1).textContent = guru.npwp;
+        });
+
+        // Masukkan data siswa ke dalam tabel
+        dataSiswa.forEach(siswa => {
+            const row = siswaTable.insertRow();
+            row.insertCell(0).textContent = siswa.nama;
+            row.insertCell(1).textContent = siswa.nisn;
+        });
+    }
+
+    // Fungsi untuk memperbarui data
+    function updateData() {
+        // Contoh update data (data bisa diubah sesuai kebutuhan)
+        dataGuru.push({ nama: 'Wahyu Adi', npwp: '11.223.344.5-667.888' });
+        dataSiswa.push({ nama: 'Lia Nabila', nisn: '1122334455' });
+
+        // Tampilkan data terbaru
+        displayData();
+    }
+
+    // Menampilkan data awal
+    displayData();
+</script>
+
+</body>
+</html>
